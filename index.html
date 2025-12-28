@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- ================= CONFIGURACIÓN BÁSICA ================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlos Núñez | Profesor de Informática</title>
+
+    <!-- ================= TAILWIND CSS ================= -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ================= FUENTES ================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- ================= CSS PROPIO ================= -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="text-white">
+
+    <!-- ================= FONDO ANIMADO ================= -->
+    <div class="stars" id="stars"></div>
+
+    <!-- ================= CONTENEDOR GENERAL ================= -->
+    <div class="content-wrapper">
+
+        <!-- ================= HERO ================= -->
+        <section class="min-h-screen flex items-center justify-center px-4 py-20">
+            <div class="text-center max-w-4xl mx-auto">
+
+                <!-- Avatar / Iniciales -->
+                <div class="mb-8 flex justify-center">
+                    <div class="relative w-48 h-48 md:w-56 md:h-56">
+                        <div
+                            class="profile-glow rounded-full overflow-hidden w-full h-full flex items-center justify-center">
+                            <div class="inner-profile">
+                                <img src="img/perfil2.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nombre -->
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 neon-text">
+                    Carlos Núñez
+                </h1>
+
+                <!-- Rol -->
+                <p class="text-xl md:text-2xl gradient-text font-semibold mb-6">
+                    Profesor de Informática
+                </p>
+
+                <!-- Frase principal -->
+                <h2 class="text-2xl md:text-4xl font-light mb-8 text-cyan-300">
+                    Transformando la Educación a través de la Tecnología
+                </h2>
+
+                <!-- Descripción -->
+                <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                    Especializado en metodologías innovadoras: Gamificación, IA Generativa y Aprendizaje Basado en
+                    Proyectos.
+                </p>
+            </div>
+        </section>
+
+        <!-- ===================================================== -->
+        <!-- ================= METODOLOGÍA ======================= -->
+        <!-- ===================================================== -->
+        <section class="py-20 px-4">
+            <div class="max-w-7xl mx-auto">
+
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
+                    Mi Metodología
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                    <!-- ================= GAMIFICACIÓN ================= -->
+                    <div class="glow-border rounded-2xl p-8 backdrop-blur-sm cursor-pointer" onclick="toggleCarousel()">
+
+                        <div class="text-5xl mb-6 text-center">🎮</div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-purple-300 text-center">
+                            Gamificación
+                        </h3>
+
+                        <p class="text-gray-300 leading-relaxed text-center mb-6">
+                            Uso herramientas como Kahoot y CodeCombat para transformar el aprendizaje
+                            en experiencias activas, competitivas y significativas.
+                        </p>
+
+                        <!-- ===== CARRUSEL (OCULTO POR DEFECTO) ===== -->
+                        <div id="gamification-carousel" class="hidden mt-6 relative">
+
+
+                            <img id="carousel-image" src="img/kahoot-1.jpeg" alt="Actividad con Kahoot"
+                                class="rounded-xl w-full max-h-64 object-contain bg-black/30 border border-purple-500/30">
+
+
+                            <!-- TEXTO -->
+                            <p id="carousel-caption" class="text-sm text-gray-300 text-center mt-3">
+                                Actividad de repaso con Kahoot – participación activa del curso
+                            </p>
+
+                            <!-- CONTROLES -->
+                            <div class="flex justify-between mt-4">
+                                <button onclick="prevSlide(event)" class="btn-neon px-4 py-2 rounded-lg text-sm">
+                                    ◀
+                                </button>
+
+                                <button onclick="nextSlide(event)" class="btn-neon px-4 py-2 rounded-lg text-sm">
+                                    ▶
+                                </button>
+                            </div>
+
+                            <p class="text-xs text-gray-500 text-center mt-3">
+                                Click en el card para cerrar
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <!-- IA Generativa -->
+                    <div class="glow-border rounded-2xl p-8 backdrop-blur-sm">
+                        <div class="text-5xl mb-6 text-center">🤖</div>
+                        <h3 class="text-2xl font-bold mb-4 text-cyan-300 text-center">
+                            IA Generativa
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Integro herramientas de IA como apoyo pedagógico para crear materiales
+                            personalizados, fomentar el pensamiento crítico y la creatividad.
+                        </p>
+                    </div>
+
+                 <!-- ================= APRENDIZAJE REAL ================= -->
+<div class="glow-border rounded-2xl p-8 backdrop-blur-sm cursor-pointer"
+     onclick="toggleRealCarousel()">
+
+    <div class="text-5xl mb-6 text-center">💡</div>
+
+    <h3 class="text-2xl font-bold mb-4 text-green-300 text-center">
+        Aprendizaje Real
+    </h3>
+
+    <p class="text-gray-300 leading-relaxed text-center mb-6">
+        Los estudiantes desarrollan proyectos concretos que simulan situaciones reales,
+        aplicando conocimientos técnicos y habilidades blandas.
+    </p>
+
+    <!-- ===== CARRUSEL APRENDIZAJE REAL (OCULTO) ===== -->
+    <div id="real-carousel"
+         class="hidden mt-6 relative">
+
+        <img id="real-carousel-image"
+             src="img/practica-1.jpeg"
+             alt="Práctica en aula"
+             class="rounded-xl w-full max-h-64 object-contain bg-black/30 border border-green-500/30">
+
+        <p id="real-carousel-caption"
+           class="text-sm text-gray-300 text-center mt-3">
+            Práctica guiada con estudiantes – trabajo colaborativo
+        </p>
+
+        <div class="flex justify-between mt-4">
+            <button onclick="prevRealSlide(event)"
+                    class="btn-neon px-4 py-2 rounded-lg text-sm">
+                ◀
+            </button>
+
+            <button onclick="nextRealSlide(event)"
+                    class="btn-neon px-4 py-2 rounded-lg text-sm">
+                ▶
+            </button>
+        </div>
+
+        <p class="text-xs text-gray-500 text-center mt-3">
+            Click en el card para cerrar
+        </p>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================== -->
+        <!-- ================= CURSOS / PROYECTOS ================= -->
+        <!-- ===================================================== -->
+        <section class="py-20 px-4">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
+                    Portfolio de Cursos
+                </h2>
+
+                <!-- GRID -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                    <!-- ================= ROBÓTICA ================= -->
+                    <a href="https://www.tinkercad.com/" target="_blank" rel="noopener noreferrer" class="block h-full">
+
+                        <!-- h-full + flex = mismo tamaño que los demás -->
+                        <div class="glow-border h-full flex flex-col justify-between
+                            bg-gradient-to-br from-purple-900/40 to-black/40
+                            rounded-xl p-6 backdrop-blur-sm
+                            hover:scale-[1.03] transition-transform cursor-pointer">
+
+                            <div>
+                                <div class="text-4xl mb-4">🤖</div>
+                                <h3 class="text-xl font-bold mb-3 text-purple-300">
+                                    Robótica Educativa
+                                </h3>
+                                <p class="text-gray-400 text-sm mb-4">
+                                    Simulación con Tinkercad y Arduino para aprender electrónica
+                                    y programación sin hardware físico.
+                                </p>
+                            </div>
+
+                            <span class="text-xs text-purple-200 opacity-70">
+                                Plataforma oficial Tinkercad
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- ================= PYTHON ================= -->
+                    <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer" class="block h-full">
+
+                        <div class="glow-border h-full flex flex-col justify-between
+                            bg-gradient-to-br from-cyan-900/40 to-black/40
+                            rounded-xl p-6 backdrop-blur-sm
+                            hover:scale-[1.03] transition-transform cursor-pointer">
+
+                            <div>
+                                <div class="text-4xl mb-4">🐍</div>
+                                <h3 class="text-xl font-bold mb-3 text-cyan-300">
+                                    Programación Python
+                                </h3>
+                                <p class="text-gray-400 text-sm mb-4">
+                                    Programación moderna orientada a proyectos reales,
+                                    automatizaciones y lógica computacional.
+                                </p>
+                            </div>
+
+                            <span class="text-xs text-cyan-200 opacity-70">
+                                Sitio oficial de Python
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- ================= WEB ================= -->
+                    <a href="https://www.youtube.com/watch?v=XqFR2lqBYPs&list=PL4ONm-ifcbQJNAzWesbl498Gof2ystb9A"
+                        target="_blank" rel="noopener noreferrer" class="block h-full">
+
+                        <div class="glow-border h-full flex flex-col justify-between
+                            bg-gradient-to-br from-green-900/40 to-black/40
+                            rounded-xl p-6 backdrop-blur-sm
+                            hover:scale-[1.03] transition-transform cursor-pointer">
+
+                            <div>
+                                <div class="text-4xl mb-4">💻</div>
+                                <h3 class="text-xl font-bold mb-3 text-green-300">
+                                    Desarrollo Web
+                                </h3>
+                                <p class="text-gray-400 text-sm mb-4">
+                                    HTML, CSS y JavaScript desde cero.
+                                    Lista curada para aprender desarrollo web moderno.
+                                </p>
+                            </div>
+
+                            <span class="text-xs text-green-200 opacity-70">
+                                Lista educativa en YouTube
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- ================= EXCEL ================= -->
+                    <a href="https://docs.google.com/spreadsheets/d/1tR4qyw9QNMnLzAWm2hss_KlwTpHxjN4QRWeGK35CmxU/edit?gid=1273530566#gid=1273530566"
+                        target="_blank" rel="noopener noreferrer" class="block h-full">
+
+                        <div class="glow-border h-full flex flex-col justify-between
+                            bg-gradient-to-br from-yellow-900/40 to-black/40
+                            rounded-xl p-6 backdrop-blur-sm
+                            hover:scale-[1.03] transition-transform cursor-pointer">
+
+                            <div>
+                                <div class="text-4xl mb-4">📊</div>
+                                <h3 class="text-xl font-bold mb-3 text-yellow-300">
+                                    Excel Aplicado
+                                </h3>
+                                <p class="text-gray-400 text-sm mb-4">
+                                    Planilla real de ejemplo con fórmulas,
+                                    organización de datos y análisis práctico.
+                                </p>
+                            </div>
+
+                            <span class="text-xs text-yellow-200 opacity-70">
+                                Planilla real en Google Sheets
+                            </span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================== -->
+        <!-- ================= CONTACTO ========================== -->
+        <!-- ===================================================== -->
+        <section class="py-20 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+
+                <h2 class="text-4xl md:text-5xl font-bold mb-12 gradient-text">
+                    Conectemos
+                </h2>
+
+                <p class="text-xl text-gray-300 mb-12">
+                    ¿Querés implementar estas metodologías en tu institución?
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+    
+    <a href="https://wa.me/5493816449129?text=Hola%20Carlos,%20vi%20tu%20portafolio%20docente%20y%20me%20gustaría%20que%20hablemos%20sobre%20tus%20proyectos%20educativos."
+        target="_blank"
+        class="btn-neon px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-3">
+        <span>📱</span> WhatsApp
+    </a>
+
+    <a href="https://www.linkedin.com/in/carlos-nu%C3%B1ez-ba7066145/" 
+       target="_blank"
+       class="btn-neon px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-3">
+        <span>💼</span> LinkedIn
+    </a>
+
+    <a href="mailto:nmcarlos725@gmail.com"
+       class="btn-neon px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-3">
+        <span>✉️</span> Email
+    </a>
+
+    <a href="https://github.com/devncarlos725"
+       target="_blank"
+       class="btn-neon px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-3">
+        <span>💻</span> GitHub
+    </a>
+
+</div>
+
+            </div>
+        </section>
+
+        <!-- ===================================================== -->
+        <!-- ================= FOOTER ============================ -->
+        <!-- ===================================================== -->
+        <footer class="py-8 px-4 border-t border-purple-500/30">
+            <div class="max-w-7xl mx-auto text-center text-gray-400">
+                <p class="mb-2">
+                    © 2024 Carlos Núñez | Profesor de Informática
+                </p>
+                <p class="text-sm gradient-text font-semibold">
+                    Transformando la educación, un proyecto a la vez 🚀
+                </p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script src="script.js"></script>
+</body>
+
+</html>
