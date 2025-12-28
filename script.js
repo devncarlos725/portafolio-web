@@ -1,56 +1,67 @@
-/* ================= FONDO DE ESTRELLAS ================= */
+/* =====================================================
+   ESTE BLOQUE SE EJECUTA CUANDO EL HTML YA CARGÓ
+   (SOLUCIÓN AL PROBLEMA DE NETLIFY / PRODUCCIÓN)
+===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  /* ================= FONDO DE ESTRELLAS ================= */
 
-/*
- Genera estrellas de forma aleatoria en el fondo.
- Cantidad: 100
- Posición: aleatoria en pantalla
- Animación: parpadeo (twinkle)
-*/
+  /*
+    - Busca el div con id="stars"
+    - Crea 100 estrellas dinámicamente
+    - Evita errores si el elemento no existe
+  */
 
-const starsContainer = document.getElementById("stars");
+  const starsContainer = document.getElementById("stars");
 
-for (let i = 0; i < 100; i++) {
-  const star = document.createElement("div");
+  // Verificación defensiva (clave en producción)
+  if (starsContainer) {
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement("div");
 
-  // Asigna la clase CSS que define tamaño y animación
-  star.className = "star";
+      // Clase CSS que define tamaño + animación
+      star.className = "star";
 
-  // Posición aleatoria en pantalla
-  star.style.left = Math.random() * 100 + "%";
-  star.style.top = Math.random() * 100 + "%";
+      // Posición aleatoria dentro de la pantalla
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
 
-  // Retraso aleatorio para que no parpadeen todas juntas
-  star.style.animationDelay = Math.random() * 3 + "s";
+      // Delay aleatorio para el efecto twinkle
+      star.style.animationDelay = Math.random() * 3 + "s";
 
-  starsContainer.appendChild(star);
-}
-
-/* ================= SCROLL SUAVE ================= */
-
-/*
- Mejora la experiencia de usuario:
- cuando se hace click en enlaces internos (#),
- el desplazamiento es animado y no brusco
-*/
-
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    const target = document.querySelector(this.getAttribute("href"));
-
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      starsContainer.appendChild(star);
     }
+  }
+
+  /* ================= SCROLL SUAVE ================= */
+
+  /*
+    - Aplica solo a links internos (#)
+    - Previene salto brusco
+    - Hace scroll animado
+  */
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const target = document.querySelector(this.getAttribute("href"));
+
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
   });
-});
+}); // ⬅️ FIN DOMContentLoaded
 
-/* ================= CARRUSEL GAMIFICACIÓN ================= */
+/* =====================================================
+   CARRUSEL DE GAMIFICACIÓN
+   (FUNCIONES GLOBALES → SE LLAMAN DESDE HTML)
+===================================================== */
 
-// Slides del carrusel
+// Slides del carrusel de gamificación
 const slides = [
   {
     img: "img/kahoot-1.jpeg",
@@ -74,14 +85,14 @@ function toggleCarousel() {
   carousel.classList.toggle("hidden");
 }
 
-// Cambiar imagen
+// Actualiza imagen + texto
 function updateSlide() {
   document.getElementById("carousel-image").src = slides[currentSlide].img;
   document.getElementById("carousel-caption").innerText =
     slides[currentSlide].text;
 }
 
-// Slide siguiente
+// Siguiente slide
 function nextSlide(event) {
   event.stopPropagation(); // evita cerrar el card
   currentSlide = (currentSlide + 1) % slides.length;
@@ -95,7 +106,9 @@ function prevSlide(event) {
   updateSlide();
 }
 
-/* ================= CARRUSEL APRENDIZAJE REAL ================= */
+/* =====================================================
+   CARRUSEL DE APRENDIZAJE REAL
+===================================================== */
 
 const realSlides = [
   {
@@ -114,10 +127,12 @@ const realSlides = [
 
 let realCurrentSlide = 0;
 
+// Mostrar / ocultar carrusel
 function toggleRealCarousel() {
   document.getElementById("real-carousel").classList.toggle("hidden");
 }
 
+// Actualiza imagen + texto
 function updateRealSlide() {
   document.getElementById("real-carousel-image").src =
     realSlides[realCurrentSlide].img;
@@ -126,12 +141,14 @@ function updateRealSlide() {
     realSlides[realCurrentSlide].text;
 }
 
+// Siguiente slide
 function nextRealSlide(event) {
   event.stopPropagation();
   realCurrentSlide = (realCurrentSlide + 1) % realSlides.length;
   updateRealSlide();
 }
 
+// Slide anterior
 function prevRealSlide(event) {
   event.stopPropagation();
   realCurrentSlide =
