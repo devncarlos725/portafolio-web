@@ -137,11 +137,13 @@ body {
 }
 
 .star {
-    position: absolute;
+   position: absolute;
     width: 2px;
     height: 2px;
     background: white;
     border-radius: 50%;
+    /* Agregamos brillo neón a cada estrella */
+    box-shadow: 0 0 5px white, 0 0 10px rgba(139, 92, 246, 0.5); 
     animation: twinkle 3s ease-in-out infinite;
 }
 
